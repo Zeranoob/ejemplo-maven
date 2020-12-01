@@ -51,7 +51,7 @@ pipeline {
        } 
       stage('Result Sonar') {
        steps {
-        sh 'mvn -e sonar:sonar \
+        sh 'mvn clean sonar:sonar \
              -Dsonar.projectKey=Taller_S6_M3 \
               -Dsonar.host.url=http://localhost:9000/sonarqube \
                -Dsonar.login=0393dedba260787229fbf470f821ac0aeccfe38b'
