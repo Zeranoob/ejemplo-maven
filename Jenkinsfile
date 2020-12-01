@@ -49,5 +49,13 @@ pipeline {
         sh 'curl -X GET http://localhost:8081/rest/mscovid/estadoMundial'
         }
        } 
-      }
-     }    
+      stage('Result Sonar') {
+       steps {
+        sh 'mvn sonar:sonar \
+             -Dsonar.projectKey=Taller_S6_M3 \
+              -Dsonar.host.url=http://localhost:9000/sonarqube \
+               -Dsonar.login=0393dedba260787229fbf470f821ac0aeccfe38b'
+         }
+        }  
+       }
+      }  
