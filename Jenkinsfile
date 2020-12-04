@@ -18,7 +18,7 @@ pipeline {
       }
       stage('SonarQube analysis') {
         steps {
-         withSonarQubeEnv(credentialsId: 'a135d85bd6bf901136a2ebe983922c8e06b945bf', installationName: 'Sonar Local') {
+         withSonarQubeEnv(credentialsId: ('a135d85bd6bf901136a2ebe983922c8e06b945bf', installationName: 'Sonar Local') {
           sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
         }
        }
