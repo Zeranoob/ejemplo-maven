@@ -3,40 +3,39 @@ pipeline {
     stages {
         stage('Compile') {
          steps {    
-          dir("/home/anonymous/Música/TallerS4/ejemplo-maven") {
-	       sh 'mvn clean compile -e'
-           }
+          sh 'mvn clean compile -e'
           }
          }
         stage('Test') {
          steps {
-          dir("/home/anonymous/Música/TallerS4/ejemplo-maven") {
-	       sh 'mvn clean test -e'
-          }
+	        sh 'mvn clean test -e'
          }
         } 
       stage('Jar') {
         steps { 
-         dir("/home/anonymous/Música/TallerS4/ejemplo-maven") {
-	      sh 'mvn clean package -e'
+         sh 'mvn clean package -e'
+       }
+      }
+      stage('SonarQube analysis') {
+        steps {
+         withSonarQubeEnv(credentialsId: 'a135d85bd6bf901136a2ebe983922c8e06b945bf', installationName: 'Sonar Local') {
+          sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
         }
        }
-      } 
+      }  
       stage('Run') {
         steps {
-         dir("/home/anonymous/Música/TallerS4/ejemplo-maven") {
-	      sh 'mvn spring-boot:run &'
-        }
+	       sh 'mvn spring-boot:run &'
        } 
       }
       stage('Wait up app') {
         steps {
-	      sh 'sleep 10'
+	       sh 'sleep 10'
        } 
       }
       stage('Testing app') {
        steps {
-        sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
+         sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
         }
        }
       stage('Result Chile') {
