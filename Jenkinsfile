@@ -18,7 +18,7 @@ pipeline {
       }
       stage('SonarQube analysis') {
         steps {
-         installationName: 'Sonar') {
+         installationName: 'Sonar' {
           sh '${scannerHome}/bin/sonar-scanner'
         }
        }
