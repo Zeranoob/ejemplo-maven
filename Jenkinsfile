@@ -18,17 +18,17 @@ pipeline {
       }
       stage('Testing app') {
        steps {
-        sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
+        sh 'curl -X GET http://localhost:8082/rest/mscovid/test?msg=testing'
         }
        }
       stage('Result Chile') {
        steps {
-        sh 'curl -X GET http://localhost:8081/rest/mscovid/estadoPais?pais=CHILE'
+        sh 'curl -X GET http://localhost:8082/rest/mscovid/estadoPais?pais=CHILE'
         }
        }
       stage('Result Mundial') {
        steps {
-        sh 'curl -X GET http://localhost:8081/rest/mscovid/estadoMundial'
+        sh 'curl -X GET http://localhost:8082/rest/mscovid/estadoMundial'
         }
        }  
       stage('uploadNexus') {
