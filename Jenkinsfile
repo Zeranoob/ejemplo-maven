@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('downloadNexus') {
          steps {    
-          sh 'curl -X GET -u admin:Pch1axli3003 http://localhost:8081/repository/test-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar -O'
+          sh 'curl -X GET -u admin:Pch1axli3003 http://localhost:8082/repository/test-nexus/com/devopsusach2020/DevOpsUsach2020/0.0.1/DevOpsUsach2020-0.0.1.jar -O'
           }
          }
         stage('Run') {
@@ -18,17 +18,17 @@ pipeline {
       }
       stage('Testing app') {
        steps {
-        sh 'curl -X GET http://localhost:8082/rest/mscovid/test?msg=testing'
+        sh 'curl -X GET http://localhost:8081/rest/mscovid/test?msg=testing'
         }
        }
       stage('Result Chile') {
        steps {
-        sh 'curl -X GET http://localhost:8082/rest/mscovid/estadoPais?pais=CHILE'
+        sh 'curl -X GET http://localhost:8081/rest/mscovid/estadoPais?pais=CHILE'
         }
        }
       stage('Result Mundial') {
        steps {
-        sh 'curl -X GET http://localhost:8082/rest/mscovid/estadoMundial'
+        sh 'curl -X GET http://localhost:8081/rest/mscovid/estadoMundial'
         }
        }  
       stage('uploadNexus') {
