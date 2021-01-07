@@ -36,6 +36,7 @@
 ### Testing Application
 * curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing'
 
+<<<<<<< HEAD
 ### Testing Webhook
 * Testing Webhook
 
@@ -43,3 +44,7 @@
 
 ### hola mundo ubuntu XXX
 
+=======
+
+#Hola Mundo
+>>>>>>> 337f9fb2d4539c071033a1801adf205bee3a854b
